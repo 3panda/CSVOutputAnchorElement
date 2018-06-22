@@ -9,8 +9,14 @@
 ## 前提条件
 
 ### 動作環境
-
 - Python3.6.4以上
+
+### 使用パッケージ
+- requests
+
+```
+pip install requests
+```
 
 ## 利用方法
 ```
