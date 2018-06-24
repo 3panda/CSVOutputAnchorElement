@@ -12,22 +12,25 @@ def main(target_url: str):
     url = target_url
     a_elem_data = []
     try:
+        # 指定されたhtmlを取得し一旦保存
         r = requests.get(url)
         with open('get.html', mode='w') as f:
             f.write(r.text)
             print(r.text)
 
-            soup = bs4.BeautifulSoup(r.text, "html.parser")
-            elems = soup.select('a')
-            for elem in elems:
-                get_elem = []
-                get_elem.append(elem.getText().replace('\n', ''))
-                title = elem.get('title')
-                if (title is None):
-                    title = ''
-                get_elem.append(title.replace('\n', ''))
-                get_elem.append(elem.get('href').replace('\n', ''))
-                a_elem_data.append(get_elem)
+        # 保存したhtmlを開く、解析
+        f = open('get.html', 'r')
+        soup = bs4.BeautifulSoup(f, "html.parser")
+        elems = soup.select('a')
+        for elem in elems:
+            get_elem = []
+            get_elem.append(elem.getText().replace('\n', ''))
+            title = elem.get('title')
+            if (title is None):
+                title = ''
+            get_elem.append(title.replace('\n', ''))
+            get_elem.append(elem.get('href').replace('\n', ''))
+            a_elem_data.append(get_elem)
         # ソートしておく
         a_elem_data.sort()
         # 重複データの削除
