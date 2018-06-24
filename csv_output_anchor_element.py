@@ -16,7 +16,6 @@ def main(target_url: str):
         r = requests.get(url)
         with open('get.html', mode='w') as f:
             f.write(r.text)
-            print(r.text)
 
         # 保存したhtmlを開く、解析
         f = open('get.html', 'r')
