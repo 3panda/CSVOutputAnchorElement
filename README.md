@@ -13,9 +13,10 @@
 
 ### 使用パッケージ
 - requests
-
+- beautifulsoup4
 ```
 pip install requests
+pip install beautifulsoup4
 ```
 
 ## 利用方法
